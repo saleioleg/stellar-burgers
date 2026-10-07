@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import { orderBurgerApi } from '../utils/burger-api';
-import { clearConstructor } from './constuctor-slice';
+import { clearConstructor } from './constructor-slice';
 
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { TOrder } from '@utils-types';

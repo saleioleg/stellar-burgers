@@ -2,6 +2,7 @@ import { BurgerConstructorUI } from '@ui';
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { clearConstructor } from '../../services/constructor-slice';
 import { placeOrder, resetOrderModal } from '../../services/order-slice';
 import { useSelector, useDispatch } from '../../services/store';
 
@@ -17,13 +18,16 @@ export const BurgerConstructor: FC = () => {
   const { orderRequest, orderModalData } = useSelector((state) => state.order);
 
   const onOrderClick = (): void => {
+    // Блокируем отправку, если нет булки или заказ уже отправляется
     if (!constructorItems.bun || orderRequest) return;
 
+    // Если пользователь не авторизован, перенаправляем на страницу входа
     if (!user) {
       navigate('/login');
       return;
     }
 
+    // Собираем массив ID ингредиентов (булка в начале + начинки + булка в конце)
     const ingredientIds = [
       constructorItems.bun._id,
       ...constructorItems.ingredients.map((item: TConstructorIngredient) => item._id),
@@ -35,6 +39,7 @@ export const BurgerConstructor: FC = () => {
 
   const closeOrderModal = (): void => {
     dispatch(resetOrderModal());
+    dispatch(clearConstructor());
   };
 
   const price = useMemo(
