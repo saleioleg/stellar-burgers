@@ -2,7 +2,7 @@ import { OrderInfoUI } from '@ui';
 import { useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { fetchFeeds } from '../../services/feed-slice';
+import { fetchFeeds, fetchUserOrders } from '../../services/feed-slice';
 import { useSelector, useDispatch } from '../../services/store';
 import { Preloader } from '../ui/preloader';
 
@@ -13,16 +13,27 @@ export const OrderInfo: FC = () => {
   const { number } = useParams<{ number: string }>();
   const dispatch = useDispatch();
 
-  const { orders } = useSelector((state) => state.feed);
+  const { orders, userOrders } = useSelector((state) => state.feed);
   const { ingredients } = useSelector((state) => state.ingredients);
 
   useEffect(() => {
+    // Подгружаем общую ленту и заказы пользователя, если массивы пустые
     if (!orders.length) {
       dispatch(fetchFeeds());
     }
-  }, [dispatch, orders.length]);
+    if (!userOrders.length) {
+      dispatch(fetchUserOrders());
+    }
+  }, [dispatch, orders.length, userOrders.length]);
 
-  const orderData = orders.find((item) => item.number === Number(number));
+  // Ищем заказ сначала в общей ленте, затем в личных заказах пользователя
+  const orderData = useMemo(() => {
+    const num = Number(number);
+    return (
+      orders.find((item) => item.number === num) ||
+      userOrders.find((item) => item.number === num)
+    );
+  }, [orders, userOrders, number]);
 
   const orderInfo = useMemo(() => {
     if (!orderData || !ingredients.length) return null;

@@ -19,7 +19,8 @@ export const Feed: FC = () => {
     dispatch(fetchFeeds());
   };
 
-  if (isLoading || !orders.length) {
+  // Показываем Preloader только при ВЕРВИЧНОЙ загрузке, когда данных еще нет
+  if (isLoading && !orders.length) {
     return <Preloader />;
   }
 

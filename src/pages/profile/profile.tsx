@@ -31,7 +31,18 @@ export const Profile: FC = () => {
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    dispatch(updateUser(formValue));
+    dispatch(updateUser(formValue))
+      .unwrap()
+      .then(() => {
+        // Очищаем поле пароля после успешного обновления
+        setFormValue((prevState) => ({
+          ...prevState,
+          password: '',
+        }));
+      })
+      .catch(() => {
+        // Ошибка обрабатывается в слайсе или UI
+      });
   };
 
   const handleCancel = (e: SyntheticEvent) => {
