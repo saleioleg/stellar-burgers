@@ -7,7 +7,7 @@ import {
   logoutApi,
   updateUserApi,
 } from '../utils/burger-api';
-import { deleteCookie, setCookie } from '../utils/cookie';
+import { deleteCookie, getCookie, setCookie } from '../utils/cookie';
 
 import type { TLoginData, TRegisterData } from '../utils/burger-api';
 import type { PayloadAction } from '@reduxjs/toolkit';
@@ -30,13 +30,14 @@ const initialState: TUserState = {
 export const checkUserAuth = createAsyncThunk(
   'user/checkUserAuth',
   async (_, { dispatch }) => {
-    if (localStorage.getItem('accessToken')) {
+    // Проверяем наличия accessToken в cookies
+    if (getCookie('accessToken')) {
       try {
         const res = await getUserApi();
         dispatch(setUser(res.user));
       } catch (error) {
-        localStorage.removeItem('accessToken');
-        deleteCookie('refreshToken');
+        deleteCookie('accessToken');
+        localStorage.removeItem('refreshToken');
       } finally {
         dispatch(setIsAuthChecked(true));
       }
@@ -46,19 +47,24 @@ export const checkUserAuth = createAsyncThunk(
   }
 );
 
-export const loginUser = createAsyncThunk('user/loginUser', async (data: TLoginData) => {
-  const res = await loginUserApi(data);
-  setCookie('refreshToken', res.refreshToken);
-  localStorage.setItem('accessToken', res.accessToken);
-  return res.user;
-});
+export const loginUser = createAsyncThunk(
+  'user/loginUser',
+  async (data: TLoginData) => {
+    const res = await loginUserApi(data);
+    // Сохраняем accessToken в cookies, а refreshToken в localStorage
+    setCookie('accessToken', res.accessToken);
+    localStorage.setItem('refreshToken', res.refreshToken);
+    return res.user;
+  }
+);
 
 export const registerUser = createAsyncThunk(
   'user/registerUser',
   async (data: TRegisterData) => {
     const res = await registerUserApi(data);
-    setCookie('refreshToken', res.refreshToken);
-    localStorage.setItem('accessToken', res.accessToken);
+    // Сохраняем accessToken в cookies, а refreshToken в localStorage
+    setCookie('accessToken', res.accessToken);
+    localStorage.setItem('refreshToken', res.refreshToken);
     return res.user;
   }
 );
@@ -73,8 +79,9 @@ export const updateUser = createAsyncThunk(
 
 export const logoutUser = createAsyncThunk('user/logoutUser', async () => {
   await logoutApi();
-  deleteCookie('refreshToken');
-  localStorage.removeItem('accessToken');
+  // Удаляем токены из правильных мест
+  deleteCookie('accessToken');
+  localStorage.removeItem('refreshToken');
 });
 
 export const userSlice = createSlice({

@@ -18,10 +18,15 @@ const initialState: TExtendedFeedState = {
   error: null,
 };
 
-export const fetchFeeds = createAsyncThunk('feed/fetchFeeds', async () => getFeedsApi());
+// 1. Публичная лента заказов (/orders/all)
+export const fetchFeeds = createAsyncThunk('feed/fetchFeeds', async () =>
+  getFeedsApi()
+);
 
-export const fetchUserOrders = createAsyncThunk('feed/fetchUserOrders', async () =>
-  getOrdersApi()
+// 2. История заказов авторизованного пользователя (/orders)
+export const fetchUserOrders = createAsyncThunk(
+  'feed/fetchUserOrders',
+  async () => getOrdersApi()
 );
 
 export const feedSlice = createSlice({
@@ -30,21 +35,41 @@ export const feedSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      // --- Обработка публичной ленты заказов ---
       .addCase(fetchFeeds.pending, (state) => {
         state.isLoading = true;
+        state.error = null;
       })
-      .addCase(fetchFeeds.fulfilled, (state, action: PayloadAction<TOrdersData>) => {
-        state.isLoading = false;
-        state.orders = action.payload.orders;
-        state.total = action.payload.total;
-        state.totalToday = action.payload.totalToday;
-      })
+      .addCase(
+        fetchFeeds.fulfilled,
+        (state, action: PayloadAction<TOrdersData>) => {
+          state.isLoading = false;
+          state.orders = action.payload.orders;
+          state.total = action.payload.total;
+          state.totalToday = action.payload.totalToday;
+        }
+      )
       .addCase(fetchFeeds.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.error.message;
+        state.error = action.error.message || 'Ошибка при загрузке ленты заказов';
       })
-      .addCase(fetchUserOrders.fulfilled, (state, action: PayloadAction<TOrder[]>) => {
-        state.userOrders = action.payload;
+
+      // --- Обработка истории заказов пользователя ---
+      .addCase(fetchUserOrders.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(
+        fetchUserOrders.fulfilled,
+        (state, action: PayloadAction<TOrder[]>) => {
+          state.isLoading = false;
+          // getOrdersApi() возвращает сразу массив TOrder[]
+          state.userOrders = action.payload;
+        }
+      )
+      .addCase(fetchUserOrders.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message || 'Ошибка при загрузке истории заказов';
       });
   },
 });
