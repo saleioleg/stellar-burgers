@@ -1,6 +1,5 @@
 import { BurgerIngredientsUI } from '@ui';
-import { useMemo, useState, useRef, useEffect } from 'react';
-import { useInView } from 'react-intersection-observer';
+import { useMemo, useState, useRef } from 'react';
 
 import { useSelector } from '../../services/store';
 import { selectIngredients } from '../../services/ingredient-slice';
@@ -9,39 +8,24 @@ import type { TIngredient, TTabMode } from '@utils-types';
 
 export const BurgerIngredients = (): React.JSX.Element => {
   const [currentTab, setCurrentTab] = useState<TTabMode>('bun');
+
   const titleBunRef = useRef<HTMLHeadingElement>(null);
   const titleMainRef = useRef<HTMLHeadingElement>(null);
   const titleSaucesRef = useRef<HTMLHeadingElement>(null);
 
   const ingredients = useSelector(selectIngredients);
 
-  const [bunsRef, inViewBuns] = useInView({
-    threshold: 0,
-  });
-
-  const [mainsRef, inViewFilling] = useInView({
-    threshold: 0,
-  });
-
-  const [saucesRef, inViewSauces] = useInView({
-    threshold: 0,
-  });
-
-  useEffect(() => {
-    if (inViewBuns) {
-      setCurrentTab('bun');
-    } else if (inViewSauces) {
-      setCurrentTab('sauce');
-    } else if (inViewFilling) {
-      setCurrentTab('main');
-    }
-  }, [inViewBuns, inViewFilling, inViewSauces]);
-
   const onTabClick = (tab: string): void => {
-    setCurrentTab(tab as TTabMode);
-    if (tab === 'bun') titleBunRef.current?.scrollIntoView({ behavior: 'smooth' });
-    if (tab === 'main') titleMainRef.current?.scrollIntoView({ behavior: 'smooth' });
-    if (tab === 'sauce') titleSaucesRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const tabMode = tab as TTabMode;
+    setCurrentTab(tabMode);
+
+    if (tabMode === 'bun') {
+      titleBunRef.current?.scrollIntoView({ behavior: 'smooth' });
+    } else if (tabMode === 'main') {
+      titleMainRef.current?.scrollIntoView({ behavior: 'smooth' });
+    } else if (tabMode === 'sauce') {
+      titleSaucesRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const buns = useMemo(
@@ -59,6 +43,8 @@ export const BurgerIngredients = (): React.JSX.Element => {
     [ingredients]
   );
 
+  const dummyRef = () => {};
+
   return (
     <BurgerIngredientsUI
       currentTab={currentTab}
@@ -68,9 +54,9 @@ export const BurgerIngredients = (): React.JSX.Element => {
       titleBunRef={titleBunRef}
       titleMainRef={titleMainRef}
       titleSaucesRef={titleSaucesRef}
-      bunsRef={bunsRef}
-      mainsRef={mainsRef}
-      saucesRef={saucesRef}
+      bunsRef={dummyRef}
+      mainsRef={dummyRef}
+      saucesRef={dummyRef}
       onTabClick={onTabClick}
     />
   );
