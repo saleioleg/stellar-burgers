@@ -8,7 +8,7 @@ import {
   ResetPassword,
   Profile,
   ProfileOrders,
-  NotFound404,
+  NotFound404
 } from '@pages';
 import { useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
@@ -29,7 +29,7 @@ export const App: FC = () => {
   const backgroundLocation = location.state?.background;
 
   useEffect(() => {
-    // 1. Проверяем токен и статус авторизации пользователя
+    // 1. Проверяем статус авторизации пользователя (внутри проверяется наличие refreshToken)
     dispatch(checkUserAuth());
     // 2. Первоначальная загрузка ингредиентов
     dispatch(fetchIngredients());

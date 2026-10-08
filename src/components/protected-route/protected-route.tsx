@@ -1,29 +1,34 @@
-import React from 'react';
+import type { ReactElement } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from '../../services/store';
+import { Preloader } from '../ui/preloader';
 
-interface IProtectedRouteProps {
+type TProtectedRouteProps = {
   onlyUnAuth?: boolean;
-  children: React.ReactElement;
-}
+  children: ReactElement;
+};
 
-export const ProtectedRoute: React.FC<IProtectedRouteProps> = ({
+export const ProtectedRoute = ({
   onlyUnAuth = false,
   children
-}) => {
-  const isAuthChecked = useSelector((state) => state.user.isAuthChecked);
-  const user = useSelector((state) => state.user.user);
+}: TProtectedRouteProps) => {
   const location = useLocation();
+  const { user, isAuthChecked } = useSelector((state) => state.user);
 
+  // Пока не завершилась проверка авторизации, показываем индикатор загрузки
   if (!isAuthChecked) {
-    return <div>Загрузка...</div>;
+    return <Preloader />;
   }
 
+  // Если роут предназначен только для неавторизованных (например, /login, /register),
+  // а пользователь уже авторизован — перенаправляем его назад или на главную
   if (onlyUnAuth && user) {
-    const { from } = location.state || { from: { pathname: '/' } };
+    const from = location.state?.from || { pathname: '/' };
     return <Navigate to={from} replace />;
   }
 
+  // Если роут защищённый, а пользователь не авторизован — перенаправляем на /login,
+  // сохраняя текущий адрес в state для последующего возврата
   if (!onlyUnAuth && !user) {
     return <Navigate to='/login' state={{ from: location }} replace />;
   }

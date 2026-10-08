@@ -1,11 +1,8 @@
-import { RegisterUI } from '@ui-pages';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-import { useDispatch, useSelector } from '../../services/store';
+import type { FC, SyntheticEvent } from 'react'
+import { RegisterUI } from '@ui-pages';
+import { useDispatch } from '../../services/store';
 import { registerUser } from '../../services/user-slice';
-
-import type { FC, SyntheticEvent } from 'react';
 
 export const Register: FC = () => {
   const [userName, setUserName] = useState('');
@@ -13,32 +10,27 @@ export const Register: FC = () => {
   const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { error } = useSelector((state) => state.user);
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-
-    dispatch(registerUser({ name: userName, email, password }))
-      .unwrap()
-      .then(() => {
-        // Перенаправляем на главную страницу после успешной регистрации
-        navigate('/', { replace: true });
+    dispatch(
+      registerUser({
+        name: userName,
+        email,
+        password
       })
-      .catch(() => {
-        // Ошибка сохранится в Redux-сторе (state.user.error)
-      });
+    );
   };
 
   return (
     <RegisterUI
-      errorText={error || ''}
+      errorText=""
       email={email}
-      setEmail={setEmail}
       userName={userName}
-      setUserName={setUserName}
       password={password}
+      setEmail={setEmail}
       setPassword={setPassword}
+      setUserName={setUserName}
       handleSubmit={handleSubmit}
     />
   );

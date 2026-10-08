@@ -7,7 +7,6 @@ import orderReducer from './order-slice';
 import userReducer from './user-slice';
 
 export const rootReducer = combineReducers({
-  // TODO: Собрать здесь редьюсеры слайсов
   user: userReducer,
   ingredients: ingredientsReducer,
   burgerConstructor: burgerConstructorReducer,
