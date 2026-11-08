@@ -28,7 +28,11 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     baseURL: 'http://localhost:4000',
-
+    recordHar: {
+      path: './tests/ingredients.har', // Путь, куда сохранится HAR-файл
+      mode: 'minimal', // Записываем только необходимые данные ответов
+      omitContent: false, // Обязательно сохраняем тела ответов (наши ингредиенты)
+    },
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
