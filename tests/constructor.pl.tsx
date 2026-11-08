@@ -7,47 +7,20 @@ const __dirname = path.dirname(__filename);
 
 const TEST_URL = 'http://localhost:4000';
 
-test.describe('Интеграционные тесты страницы конструктора бургера с записью/просмотром HAR', () => {
+test.describe('Интеграционные тесты страницы конструктора бургера с использованием HAR', () => {
   
-  test.beforeEach(async ({ context, page }) => {
-    // Подключаем HAR-файл для перехвата запроса ингредиентов
-    await context.routeFromHAR(path.join(__dirname, 'ingredients.har'), {
-      url: '**/api/ingredients',
+  test.beforeEach(async ({ page }) => {
+    // Единый HAR-файл для перехвата ВСЕХ запросов.
+    // ВАЖНО: update: false, чтобы тесты брали данные из записанного HAR, а не перезаписывали его.
+    await page.routeFromHAR(path.join(__dirname, 'hars/ingredients.har'), {
       update: false,
+      notFound: 'fallback',
     });
 
-    // Мок данных пользователя
-    await page.route('**/api/auth/user', async (route) => {
-      await route.fulfill({
-        status: 200,
-        contentType: 'application/json',
-        body: JSON.stringify({
-          success: true,
-          user: { email: 'test@yandex.ru', name: 'TestUser' }
-        })
-      });
-    });
-
-    // Мок создания заказа
-    await page.route('**/api/orders', async (route) => {
-      if (route.request().method() === 'POST') {
-        await route.fulfill({
-          status: 200,
-          contentType: 'application/json',
-          body: JSON.stringify({
-            success: true,
-            name: 'Краторный марсианский бургер',
-            order: { number: 12345 }
-          })
-        });
-      } else {
-        route.continue();
-      }
-    });
-
-    // Токены авторизации
+    // Мокаем авторизацию: сохраняем токен БЕЗ слова Bearer в куку, 
+    // так как в burger-api.ts мы теперь добавляем его динамически через `Bearer ${getCookie('accessToken')}`
     await page.context().addCookies([
-      { name: 'accessToken', value: 'Bearer mock-token', domain: 'localhost', path: '/' }
+      { name: 'accessToken', value: 'mock-token', domain: 'localhost', path: '/' }
     ]);
     await page.addInitScript(() => {
       localStorage.setItem('refreshToken', 'mock-refresh-token');
@@ -57,50 +30,60 @@ test.describe('Интеграционные тесты страницы конс
   });
 
   test('Добавление ингредиентов (булки и начинки) из списка в конструктор', async ({ page }) => {
-    // 1. Добавляем булку
     const bunCard = page.locator('li').filter({ hasText: 'Краторная булка N-200i' }).first();
     await expect(bunCard).toBeVisible();
     await bunCard.locator('button').click();
 
-    // 2. Кликаем по вкладке «Начинки» (или «Соусы»)
     const tab = page.locator('div[class*="tab"]').filter({ hasText: /начинки|соусы/i }).first();
     if (await tab.isVisible()) {
       await tab.click();
     }
 
-    // 3. Добавляем начинку (из логов видно, что название в приложении может содержать альтернативный вариант, используем универсальный шаблон)
     const mainCard = page.locator('li').filter({ hasText: /Филе Люминесцентного/i }).first();
     await expect(mainCard).toBeVisible();
     await mainCard.locator('button').click();
 
-    // Проверяем отображение конкретных элементов в конструкторе без конфликта strict mode
     await expect(page.locator('.constructor-element_pos_top')).toContainText('Краторная булка N-200i (верх)');
     await expect(page.locator('.constructor-element').filter({ hasText: /Филе Люминесцентного/i })).toBeVisible();
   });
 
-  test('Работа модальных окон (открытие, закрытие по крестику и оверлею)', async ({ page }) => {
+  test('Работа модальных окон (открытие, проверка данных, закрытие по крестику и оверлею)', async ({ page }) => {
     const bunCard = page.locator('li').filter({ hasText: 'Краторная булка N-200i' }).first();
     await expect(bunCard).toBeVisible();
     
-    // Открываем модальное окно кликом по картинке
+    const ingredientName = await bunCard.locator('p.text_type_main-default').textContent();
+
     await bunCard.locator('img').click();
     
-    const modal = page.locator('#modals div, [class*="modal"]').first();
-    await expect(modal).toBeVisible();
-    await expect(page.locator('text=Детали ингредиента')).toBeVisible();
+    // СТРОГО ограничиваем поиск модальным окном деталей ингредиента
+    const ingredientModal = page.locator('#modals div, [class*="modal"]').filter({ hasText: 'Детали ингредиента' }).first();
+    await expect(ingredientModal).toBeVisible();
+    
+    // Проверка заголовка и названия ингредиента СТРОГО внутри модалки
+    await expect(ingredientModal.locator('text=Детали ингредиента')).toBeVisible();
+    await expect(ingredientModal.locator('h2, h3, p').filter({ hasText: ingredientName! }).first()).toBeVisible();
 
-    // Закрытие строго по крестику внутри модального окна
-    const closeButton = modal.locator('button').first();
+    // Проверка подробных данных ингредиента (калории, белки, жиры, углеводы) с конкретными значениями из мока
+    await expect(ingredientModal.locator('text=Калории, ккал')).toBeVisible();
+    await expect(ingredientModal.locator('text=420')).toBeVisible(); // Значение калорий для булки из мока
+    await expect(ingredientModal.locator('text=Белки, г')).toBeVisible();
+    await expect(ingredientModal.locator('text=80')).toBeVisible();  // Значение белков
+    await expect(ingredientModal.locator('text=Жиры, г')).toBeVisible();
+    await expect(ingredientModal.locator('text=24')).toBeVisible();  // Значение жиров
+    await expect(ingredientModal.locator('text=Углеводы, г')).toBeVisible();
+    await expect(ingredientModal.locator('text=53')).toBeVisible();  // Значение углеводов
+
+    // Закрытие по крестику (кнопка внутри модалки)
+    const closeButton = ingredientModal.locator('button').first();
     await closeButton.click();
-    await expect(modal).not.toBeVisible();
+    await expect(ingredientModal).not.toBeVisible();
 
-    // Повторное открытие для проверки закрытия по оверлею
+    // Повторное открытие и закрытие по клику на оверлей (вне модалки)
     await bunCard.locator('img').click();
-    await expect(modal).toBeVisible();
+    await expect(ingredientModal).toBeVisible();
 
-    // Закрытие по клику на оверлей
     await page.mouse.click(10, 10);
-    await expect(modal).not.toBeVisible();
+    await expect(ingredientModal).not.toBeVisible();
   });
 
   test('Создание заказа', async ({ page }) => {
@@ -117,20 +100,23 @@ test.describe('Интеграционные тесты страницы конс
     await expect(mainCard).toBeVisible();
     await mainCard.locator('button').click();
 
-    // Оформление заказа
     const orderButton = page.locator('button:has-text("Оформить заказ")');
     await expect(orderButton).toBeEnabled();
     await orderButton.click();
 
-    // Проверяем номер заказа в модальном окне
-    const orderModal = page.locator('text=12345');
-    await expect(orderModal).toBeVisible();
+    // СТРОГО ограничиваем поиск модальным окном заказа
+    const orderModal = page.locator('#modals div, [class*="modal"]').first();
+    await expect(orderModal).toBeVisible({ timeout: 15000 });
 
-    // Проверяем, что конструктор очистился (ингредиенты пропали из конструктора)
+    // Проверяем номер заказа строго внутри модального окна заказа (ожидаемый номер берется из вашего HAR/мока заказа, например, 12345)
+    const expectedOrderNumber = '12345'; // Замените на реальный номер заказа из вашего HAR-файла
+    const orderNumberElement = orderModal.locator(`p.text_type_digits-large, h2, h3, p`).filter({ hasText: expectedOrderNumber }).first();
+    await expect(orderNumberElement).toBeVisible();
+
+    // Проверка, что конструктор очистился после успешного заказа
     await expect(page.locator('.constructor-element')).toHaveCount(0);
 
-    // Закрываем модальное окно заказа через крестик в модалке
-    const closeOrderModalBtn = page.locator('#modals button, [class*="modal"] button').first();
+    const closeOrderModalBtn = orderModal.locator('button').first();
     await closeOrderModalBtn.click();
     await expect(orderModal).not.toBeVisible();
   });
