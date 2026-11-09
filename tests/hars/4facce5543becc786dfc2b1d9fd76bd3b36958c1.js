@@ -1,0 +1,3 @@
+export { Modal } from "/src/components/modal/modal.tsx";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IE1vZGFsIH0gZnJvbSAnLi9tb2RhbCc7XG4iXSwibWFwcGluZ3MiOiJBQUFBLFNBQVMsYUFBYTsiLCJuYW1lcyI6W119

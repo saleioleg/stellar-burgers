@@ -1,0 +1,10 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/ui/orders-list/orders-list.module.css");import { updateStyle as __vite__updateStyle, removeStyle as __vite__removeStyle } from "/@vite/client"
+const __vite__id = "C:/practicum/stellar-burgers/src/components/ui/orders-list/orders-list.module.css"
+const __vite__css = ".orders-list__content_5a199 {\r\n  width: 100%;\r\n  height: 100%;\r\n  overflow-y: scroll;\r\n}\r\n"
+__vite__updateStyle(__vite__id, __vite__css)
+export const content = "orders-list__content_5a199";
+export default {
+	content: content
+};
+
+import.meta.hot.prune(() => __vite__removeStyle(__vite__id))

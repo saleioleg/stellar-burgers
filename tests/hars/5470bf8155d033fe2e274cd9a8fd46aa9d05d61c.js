@@ -1,0 +1,3 @@
+export { BurgerConstructorElementUI } from "/src/components/ui/burger-constructor-element/burger-constructor-element.tsx";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IEJ1cmdlckNvbnN0cnVjdG9yRWxlbWVudFVJIH0gZnJvbSAnLi9idXJnZXItY29uc3RydWN0b3ItZWxlbWVudCc7XG4iXSwibWFwcGluZ3MiOiJBQUFBLFNBQVMsa0NBQWtDOyIsIm5hbWVzIjpbXX0=

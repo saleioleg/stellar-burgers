@@ -1,0 +1,3 @@
+export { NotFound404 } from "/src/pages/not-fount-404/not-fount-404.tsx";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IE5vdEZvdW5kNDA0IH0gZnJvbSAnLi9ub3QtZm91bnQtNDA0JztcbiJdLCJtYXBwaW5ncyI6IkFBQUEsU0FBUyxtQkFBbUI7IiwibmFtZXMiOltdfQ==

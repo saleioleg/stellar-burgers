@@ -1,0 +1,3 @@
+export { OrderCardUI } from "/src/components/ui/order-card/order-card.tsx";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IE9yZGVyQ2FyZFVJIH0gZnJvbSAnLi9vcmRlci1jYXJkJztcbiJdLCJtYXBwaW5ncyI6IkFBQUEsU0FBUyxtQkFBbUI7IiwibmFtZXMiOltdfQ==

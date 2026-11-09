@@ -1,0 +1,3 @@
+export { IngredientDetails } from "/src/components/ingredient-details/ingredient-details.tsx";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IEluZ3JlZGllbnREZXRhaWxzIH0gZnJvbSAnLi9pbmdyZWRpZW50LWRldGFpbHMnO1xuIl0sIm1hcHBpbmdzIjoiQUFBQSxTQUFTLHlCQUF5QjsiLCJuYW1lcyI6W119

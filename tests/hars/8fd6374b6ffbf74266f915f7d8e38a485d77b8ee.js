@@ -1,0 +1,3 @@
+export { OrdersListUI } from "/src/components/ui/orders-list/orders-list.tsx";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IE9yZGVyc0xpc3RVSSB9IGZyb20gJy4vb3JkZXJzLWxpc3QnO1xuIl0sIm1hcHBpbmdzIjoiQUFBQSxTQUFTLG9CQUFvQjsiLCJuYW1lcyI6W119

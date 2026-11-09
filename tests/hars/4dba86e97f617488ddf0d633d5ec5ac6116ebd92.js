@@ -1,0 +1,3 @@
+export { AppHeaderUI } from "/src/components/ui/app-header/app-header.tsx";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IEFwcEhlYWRlclVJIH0gZnJvbSAnLi9hcHAtaGVhZGVyJztcbiJdLCJtYXBwaW5ncyI6IkFBQUEsU0FBUyxtQkFBbUI7IiwibmFtZXMiOltdfQ==

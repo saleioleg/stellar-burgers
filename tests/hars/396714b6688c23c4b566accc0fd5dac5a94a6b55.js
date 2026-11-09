@@ -1,0 +1,3 @@
+export { OrderInfo } from "/src/components/order-info/order-info.tsx";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IE9yZGVySW5mbyB9IGZyb20gJy4vb3JkZXItaW5mbyc7XG4iXSwibWFwcGluZ3MiOiJBQUFBLFNBQVMsaUJBQWlCOyIsIm5hbWVzIjpbXX0=

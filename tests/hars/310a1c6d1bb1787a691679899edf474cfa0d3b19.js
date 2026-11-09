@@ -1,0 +1,3 @@
+export { AppHeader } from "/src/components/app-header/app-header.tsx";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IEFwcEhlYWRlciB9IGZyb20gJy4vYXBwLWhlYWRlcic7XG4iXSwibWFwcGluZ3MiOiJBQUFBLFNBQVMsaUJBQWlCOyIsIm5hbWVzIjpbXX0=

@@ -1,0 +1,3 @@
+export { ForgotPasswordUI } from "/src/components/ui/pages/forgot-password/forgot-password.tsx";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IEZvcmdvdFBhc3N3b3JkVUkgfSBmcm9tICcuL2ZvcmdvdC1wYXNzd29yZCc7XG4iXSwibWFwcGluZ3MiOiJBQUFBLFNBQVMsd0JBQXdCOyIsIm5hbWVzIjpbXX0=

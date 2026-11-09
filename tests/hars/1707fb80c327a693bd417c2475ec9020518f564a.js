@@ -1,0 +1,3 @@
+export { ProfileOrders } from "/src/pages/profile-orders/profile-orders.tsx";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IFByb2ZpbGVPcmRlcnMgfSBmcm9tICcuL3Byb2ZpbGUtb3JkZXJzJztcbiJdLCJtYXBwaW5ncyI6IkFBQUEsU0FBUyxxQkFBcUI7IiwibmFtZXMiOltdfQ==

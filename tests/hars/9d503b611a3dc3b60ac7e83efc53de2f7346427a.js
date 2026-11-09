@@ -1,0 +1,3 @@
+export { ResetPassword } from "/src/pages/reset-password/reset-password.tsx";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IFJlc2V0UGFzc3dvcmQgfSBmcm9tICcuL3Jlc2V0LXBhc3N3b3JkJztcbiJdLCJtYXBwaW5ncyI6IkFBQUEsU0FBUyxxQkFBcUI7IiwibmFtZXMiOltdfQ==

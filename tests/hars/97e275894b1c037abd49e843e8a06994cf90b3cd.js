@@ -1,0 +1,3 @@
+export { ConstructorPage } from "/src/pages/constructor-page/constructor-page.tsx";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IENvbnN0cnVjdG9yUGFnZSB9IGZyb20gJy4vY29uc3RydWN0b3ItcGFnZSc7XG4iXSwibWFwcGluZ3MiOiJBQUFBLFNBQVMsdUJBQXVCOyIsIm5hbWVzIjpbXX0=

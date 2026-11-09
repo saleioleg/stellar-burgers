@@ -1,0 +1,3 @@
+export { FeedUI } from "/src/components/ui/pages/feed/feed.tsx";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IEZlZWRVSSB9IGZyb20gJy4vZmVlZCc7XG4iXSwibWFwcGluZ3MiOiJBQUFBLFNBQVMsY0FBYzsiLCJuYW1lcyI6W119

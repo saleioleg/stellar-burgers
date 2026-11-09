@@ -1,0 +1,3 @@
+export { IngredientDetailsUI } from "/src/components/ui/ingredient-details/ingredient-details.tsx";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IEluZ3JlZGllbnREZXRhaWxzVUkgfSBmcm9tICcuL2luZ3JlZGllbnQtZGV0YWlscyc7XG4iXSwibWFwcGluZ3MiOiJBQUFBLFNBQVMsMkJBQTJCOyIsIm5hbWVzIjpbXX0=

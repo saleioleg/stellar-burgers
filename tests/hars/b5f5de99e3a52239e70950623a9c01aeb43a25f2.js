@@ -1,0 +1,3 @@
+export { BurgerIngredientUI } from "/src/components/ui/burger-ingredient/burger-ingredient.tsx";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IEJ1cmdlckluZ3JlZGllbnRVSSB9IGZyb20gJy4vYnVyZ2VyLWluZ3JlZGllbnQnO1xuIl0sIm1hcHBpbmdzIjoiQUFBQSxTQUFTLDBCQUEwQjsiLCJuYW1lcyI6W119

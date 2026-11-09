@@ -1,0 +1,3 @@
+export { FeedInfo } from "/src/components/feed-info/feed-info.tsx";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IEZlZWRJbmZvIH0gZnJvbSAnLi9mZWVkLWluZm8nO1xuIl0sIm1hcHBpbmdzIjoiQUFBQSxTQUFTLGdCQUFnQjsiLCJuYW1lcyI6W119

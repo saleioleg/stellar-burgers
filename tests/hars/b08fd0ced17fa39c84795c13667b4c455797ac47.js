@@ -1,0 +1,3 @@
+export { ProfileMenuUI } from "/src/components/ui/profile-menu/profile-menu.tsx";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IFByb2ZpbGVNZW51VUkgfSBmcm9tICcuL3Byb2ZpbGUtbWVudSc7XG4iXSwibWFwcGluZ3MiOiJBQUFBLFNBQVMscUJBQXFCOyIsIm5hbWVzIjpbXX0=
