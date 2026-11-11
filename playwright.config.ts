@@ -75,6 +75,7 @@ export default defineConfig({
   webServer: {
     command: 'npm run start',
     url: 'http://localhost:4000',
+    env: { BURGER_API_URL: 'https://norma.ffapi.ru/api' },
     reuseExistingServer: !process.env.CI,
   },
 });

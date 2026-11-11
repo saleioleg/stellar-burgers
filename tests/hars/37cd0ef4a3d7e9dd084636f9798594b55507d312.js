@@ -1,3 +1,0 @@
-export { BurgerConstructorElement } from "/src/components/burger-constructor-element/burger-constructor-element.tsx";
-
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IEJ1cmdlckNvbnN0cnVjdG9yRWxlbWVudCB9IGZyb20gJy4vYnVyZ2VyLWNvbnN0cnVjdG9yLWVsZW1lbnQnO1xuIl0sIm1hcHBpbmdzIjoiQUFBQSxTQUFTLGdDQUFnQzsiLCJuYW1lcyI6W119

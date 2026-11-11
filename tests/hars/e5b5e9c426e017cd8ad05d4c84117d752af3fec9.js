@@ -1,3 +1,0 @@
-export { OrdersList } from "/src/components/orders-list/orders-list.tsx";
-
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IE9yZGVyc0xpc3QgfSBmcm9tICcuL29yZGVycy1saXN0JztcbiJdLCJtYXBwaW5ncyI6IkFBQUEsU0FBUyxrQkFBa0I7IiwibmFtZXMiOltdfQ==

@@ -1,3 +1,0 @@
-export { ProfileUI } from "/src/components/ui/pages/profile/profile.tsx";
-
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IFByb2ZpbGVVSSB9IGZyb20gJy4vcHJvZmlsZSc7XG4iXSwibWFwcGluZ3MiOiJBQUFBLFNBQVMsaUJBQWlCOyIsIm5hbWVzIjpbXX0=

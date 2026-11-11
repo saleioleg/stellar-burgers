@@ -1,3 +1,0 @@
-export { Login } from "/src/pages/login/login.tsx";
-
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IExvZ2luIH0gZnJvbSAnLi9sb2dpbic7XG4iXSwibWFwcGluZ3MiOiJBQUFBLFNBQVMsYUFBYTsiLCJuYW1lcyI6W119

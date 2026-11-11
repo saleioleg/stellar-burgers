@@ -1,3 +1,0 @@
-export { ConstructorPageUI } from "/src/components/ui/pages/constructor-page/constructor-page.tsx";
-
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IENvbnN0cnVjdG9yUGFnZVVJIH0gZnJvbSAnLi9jb25zdHJ1Y3Rvci1wYWdlJztcbiJdLCJtYXBwaW5ncyI6IkFBQUEsU0FBUyx5QkFBeUI7IiwibmFtZXMiOltdfQ==

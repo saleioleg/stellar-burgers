@@ -1,3 +1,0 @@
-export { Register } from "/src/pages/register/register.tsx";
-
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IFJlZ2lzdGVyIH0gZnJvbSAnLi9yZWdpc3Rlcic7XG4iXSwibWFwcGluZ3MiOiJBQUFBLFNBQVMsZ0JBQWdCOyIsIm5hbWVzIjpbXX0=

@@ -1,3 +1,0 @@
-export { IngredientsCategory } from "/src/components/ingredients-category/ingredients-category.tsx";
-
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IEluZ3JlZGllbnRzQ2F0ZWdvcnkgfSBmcm9tICcuL2luZ3JlZGllbnRzLWNhdGVnb3J5JztcbiJdLCJtYXBwaW5ncyI6IkFBQUEsU0FBUywyQkFBMkI7IiwibmFtZXMiOltdfQ==

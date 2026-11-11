@@ -1,3 +1,0 @@
-export { BurgerIngredients } from "/src/components/burger-ingredients/burger-ingredients.tsx";
-
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IEJ1cmdlckluZ3JlZGllbnRzIH0gZnJvbSAnLi9idXJnZXItaW5ncmVkaWVudHMnO1xuIl0sIm1hcHBpbmdzIjoiQUFBQSxTQUFTLHlCQUF5QjsiLCJuYW1lcyI6W119

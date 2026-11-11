@@ -1,3 +1,0 @@
-{"type":"receive","time":-1,"opcode":1,"data":"{\"type\":\"connected\"}"}
-{"type":"send","time":-1,"opcode":1,"data":"{\"type\":\"custom\",\"event\":\"vite-plugin-checker\",\"data\":{\"event\":\"runtime-loaded\"}}"}
-{"type":"receive","time":-1,"opcode":1,"data":"{\"type\":\"custom\",\"event\":\"vite-plugin-checker\",\"data\":{\"event\":\"vite-plugin-checker:reconnect\",\"data\":[{\"event\":\"vite-plugin-checker:error\",\"data\":{\"checkerId\":\"typescript\",\"diagnostics\":[]}}]}}"}

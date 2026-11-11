@@ -1,3 +1,0 @@
-export { ProfileMenu } from "/src/components/profile-menu/profile-menu.tsx";
-
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IFByb2ZpbGVNZW51IH0gZnJvbSAnLi9wcm9maWxlLW1lbnUnO1xuIl0sIm1hcHBpbmdzIjoiQUFBQSxTQUFTLG1CQUFtQjsiLCJuYW1lcyI6W119

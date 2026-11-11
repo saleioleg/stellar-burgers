@@ -1,3 +1,0 @@
-export { ResetPasswordUI } from "/src/components/ui/pages/reset-password/reset-password.tsx";
-
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IFJlc2V0UGFzc3dvcmRVSSB9IGZyb20gJy4vcmVzZXQtcGFzc3dvcmQnO1xuIl0sIm1hcHBpbmdzIjoiQUFBQSxTQUFTLHVCQUF1QjsiLCJuYW1lcyI6W119

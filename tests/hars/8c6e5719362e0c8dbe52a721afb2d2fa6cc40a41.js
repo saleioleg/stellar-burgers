@@ -1,3 +1,0 @@
-export { ForgotPassword } from "/src/pages/forgot-password/forgot-password.tsx";
-
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IEZvcmdvdFBhc3N3b3JkIH0gZnJvbSAnLi9mb3Jnb3QtcGFzc3dvcmQnO1xuIl0sIm1hcHBpbmdzIjoiQUFBQSxTQUFTLHNCQUFzQjsiLCJuYW1lcyI6W119

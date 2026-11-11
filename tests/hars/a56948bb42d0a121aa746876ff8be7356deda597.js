@@ -1,3 +1,0 @@
-export { RegisterUI } from "/src/components/ui/pages/register/register.tsx";
-
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IFJlZ2lzdGVyVUkgfSBmcm9tICcuL3JlZ2lzdGVyJztcbiJdLCJtYXBwaW5ncyI6IkFBQUEsU0FBUyxrQkFBa0I7IiwibmFtZXMiOltdfQ==

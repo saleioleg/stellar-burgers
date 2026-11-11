@@ -1,3 +1,0 @@
-export { OrderInfoUI } from "/src/components/ui/order-info/order-info.tsx";
-
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IE9yZGVySW5mb1VJIH0gZnJvbSAnLi9vcmRlci1pbmZvJztcbiJdLCJtYXBwaW5ncyI6IkFBQUEsU0FBUyxtQkFBbUI7IiwibmFtZXMiOltdfQ==
